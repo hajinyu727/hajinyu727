@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다국어 선택</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    .container {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    .page {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    h1 {
+      color: #333;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px;
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #4338ca;
+    }
+    .back-btn {
+      margin-top: 20px;
+      background-color: #6b7280;
+    }
+    .icon-list img {
+      width: 60px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Language Selection -->
+    <div class="page active" id="langPage">
+      <h1>언어를 선택하세요</h1>
+      <div class="button-grid">
+        <button onclick="goToPage('menuPage')">English</button>
+        <button onclick="goToPage('menuPage')">中文</button>
+        <button onclick="goToPage('menuPage')">日本語</button>
+        <button onclick="goToPage('menuPage')">Tiếng Việt</button>
+        <button onclick="goToPage('menuPage')">ภาษาไทย</button>
+        <button onclick="goToPage('menuPage')">O‘zbek</button>
+        <button onclick="goToPage('menuPage')">ខ្មែរ</button>
+        <button onclick="goToPage('menuPage')">Tagalog</button>
+        <button onclick="goToPage('menuPage')">Bahasa Indonesia</button>
+        <button onclick="goToPage('menuPage')">नेपाली</button>
+      </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div class="page" id="menuPage">
+      <h1>메뉴를 선택하세요</h1>
+      <div class="button-grid">
+        <button onclick="goToPage('exchangePage')"> 외화 환전</button>
+        <button onclick="goToPage('transportPage')">교통수단 예약</button>
+        <button onclick="goToPage('cardPage')">라차카드 서비스</button>
+        <button onclick="goToPage('supportPage')">고객지원</button>
+      </div>
+      <button class="back-btn" onclick="goBack('langPage')">뒤로가기</button>
+    </div>
+
+    <!-- Exchange Page -->
+    <div class="page" id="exchangePage">
+      <h1>외화 환전</h1>
+      <p>✈ 한국 여행의 시작, 더 간편하게!<br>
+         💸 수수료 0원 외화 환전<br>
+         🚆 버스·지하철·기차 바로 탑승<br>
+         💳 카드 하나로 한국 여행 끝!<br>
+         👉 QR코드를 스캔해서 바로 신청하세요!</p>
+      <div class="icon-list">
+        <!-- Replace with actual currency icons if available -->
+        <img src="usd.png" alt="USD" title="USD">
+        <img src="cny.png" alt="CNY" title="CNY">
+        <img src="jpy.png" alt="JPY" title="JPY">
+        <img src="vnd.png" alt="VND" title="VND">
+        <img src="thb.png" alt="THB" title="THB">
+        <img src="uzs.png" alt="UZS" title="UZS">
+        <img src="khr.png" alt="KHR" title="KHR">
+        <img src="php.png" alt="PHP" title="PHP">
+        <img src="idr.png" alt="IDR" title="IDR">
+        <img src="npr.png" alt="NPR" title="NPR">
+      </div>
+      <button class="back-btn" onclick="goBack('menuPage')">뒤로가기</button>
+    </div>
+
+    <!-- Transport Page -->
+    <div class="page" id="transportPage">
+      <h1>교통수단 예약</h1>
+      <div class="icon-list">
+        <img src="bus.png" alt="버스" title="버스">
+        <img src="plane.png" alt="비행기" title="비행기">
+        <img src="taxi.png" alt="택시" title="택시">
+        <img src="ktx.png" alt="KTX" title="KTX">
+      </div>
+      <p>원하는 교통수단을 선택해 예약하세요.</p>
+      <button class="back-btn" onclick="goBack('menuPage')">뒤로가기</button>
+    </div>
+
+    <!-- Card Service Page -->
+    <div class="page" id="cardPage">
+      <h1>라차카드 서비스</h1>
+      <div class="button-grid">
+        <button onclick="goToPage('cardSignup')">카드 가입</button>
+        <button onclick="goToPage('cardPoint')">포인트 안내</button>
+        <button onclick="goToPage('cardLost')">카드 분실</button>
+        <button onclick="goToPage('cardUsage')">이용 방법</button>
+      </div>
+      <button class="back-btn" onclick="goBack('menuPage')">뒤로가기</button>
+    </div>
+
+    <!-- Card Sub-Pages -->
+    <div class="page" id="cardSignup">
+      <h2>카드 가입 안내</h2>
+      <p>가입 상세설명과 동의 절차 안내가 여기에 표시됩니다.</p>
+      <button class="back-btn" onclick="goBack('cardPage')">뒤로가기</button>
+    </div>
+
+    <div class="page" id="cardPoint">
+      <h2>포인트 조회</h2>
+      <p>현재 보유한 라차포인트를 조회할 수 있습니다.</p>
+      <button class="back-btn" onclick="goBack('cardPage')">뒤로가기</button>
+    </div>
+
+    <div class="page" id="cardLost">
+      <h2>카드 분실 신고</h2>
+      <p>카드 분실 시 신고 방법과 절차를 안내합니다.</p>
+      <button class="back-btn" onclick="goBack('cardPage')">뒤로가기</button>
+    </div>
+
+    <div class="page" id="cardUsage">
+      <h2>카드 이용 방법</h2>
+      <p>수수료 없는 환전, 교통 탑승, 결제 등 다양한 기능을 설명합니다.</p>
+      <button class="back-btn" onclick="goBack('cardPage')">뒤로가기</button>
+    </div>
+
+    <!-- Support Page -->
+    <div class="page" id="supportPage">
+      <h1>고객 지원</h1>
+      <p>상담원 연결을 원하시면 안내에 따라 진행하세요.</p>
+      <button class="back-btn" onclick="goBack('menuPage')">뒤로가기</button>
+    </div>
+  </div>
+
+  <script>
+    function goToPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+    function goBack(id) {
+      goToPage(id);
+    }
+  </script>
+</body>
+</html>
